@@ -49,6 +49,19 @@ def calculate_calibration_num(filename: str, contains_num_str: bool) -> int:
     return total
 
 
+def calibration_oneliner(filename: str) -> int:
+    file = open(filename, "r")
+    lines = file.readlines()
+    total = 0
+    for word in lines:
+        numbers = "".join(filter(str.isdigit, word))
+        total = total + int(str(numbers[0]) + str(numbers[-1]))
+
+    return total
+
+
+print(f"The calibration number is: {calibration_oneliner('calibration_data.txt')}")
+
 print(
     f"The calibration number is: {calculate_calibration_num('calibration_data.txt', True)}"
 )
