@@ -18,7 +18,7 @@ def check_schematics():
     total = 0
     for line in tuples_map:
         for tuple in line:
-            if adjacent_to_symbol(line_number, tuple[0], tuple[1]):
+            if is_range_adjacent_to_symbol(line_number, tuple[0], tuple[1]):
                 total = total + int(
                     schematic_lines[line_number][tuple[0] : tuple[1] + 1]
                 )
@@ -26,7 +26,7 @@ def check_schematics():
     print(total)
 
 
-def adjacent_to_symbol(line_number: int, first: int, last: int) -> bool:
+def is_range_adjacent_to_symbol(line_number: int, first: int, last: int) -> bool:
     first_line = line_number - 1
     if first_line < 0:
         first_line = 0
